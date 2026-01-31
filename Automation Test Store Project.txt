@@ -1,0 +1,37 @@
+Automation Test Store Project:
+
+Observation notes
+
+By clicking on Automation test store link, refreshes /reloads the Homepage
+
+clicking on register page redirects the user to register as a new customer
+
+click on continue, redirects to login details info, fill all the mandatory fields to create account, again click on continue
+
+login as a registered user with valid credentials, also try to login with invalid credentials
+
+check forgot password, forgot login workflows
+
+clicking on specials link, displays the products on special offer
+view and explore products page
+
+click on view, the page redirects to product specifications and details
+
+Here user can see price, quantity, add to cart button, product description
+
+click on add product, redirects to checkout, applies coupon if have any, enter shipping details and checkout the product
+
+User clicks on Account, navigates to user login page and check orders info by providing valid details(order id, email)
+
+user can navigate to different products by clicking on links, the page displays products under specific category
+
+user can search for the products based on their preferences
+
+user can contact the support team via phone and email address
+
+user can view customer testimonials
+
+Homepage displays all the information 
+
+
+
