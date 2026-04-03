@@ -8,7 +8,7 @@ from pageObjects.AuthPage import AuthPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 
-class Test_Auth:
+class Test_Registration:
     baseURL= ReadConfig.getApplicationURL()
     firstname= ReadConfig.getFirstname()
     lastname= ReadConfig.getLastname()
@@ -26,7 +26,7 @@ class Test_Auth:
 
     def test_RegistrationPageTitle(self,setup):
 
-        self.logger.info("****** Test_001_Auth *****")
+        self.logger.info("****** Test_Auth *****")
         self.logger.info("****** Verifying User Registration Page Title *****")
         self.driver=setup
         self.driver.get(self.baseURL)
@@ -71,12 +71,12 @@ class Test_Auth:
         act_title = self.driver.title
         if act_title == "Your Account Has Been Created!":
             assert True
-            self.driver.save_screenshot(".\\Screenshots\\test_validRegistration_PASS.png")
+            self.driver.save_screenshot(".\\Screenshots\\test_Registration_valid_PASS.png")
             self.logger.info("****** Valid User Registration Successful *****")
             self.driver.close()
 
         else:
-            self.driver.save_screenshot(".\\Screenshots\\test_validRegistration_FAIL.png")
+            self.driver.save_screenshot(".\\Screenshots\\test_Registration_valid_FAIL.png")
             self.logger.error("****** Valid User Registration Failed *****")
             self.driver.close()
             assert False
@@ -95,21 +95,25 @@ class Test_Auth:
         self.Auth.setemail("")
         self.Auth.setaddress1("")
         self.Auth.setcity("")
-        self.Auth.select_country("")
+        #self.Auth.select_country("")
 
-        self.Auth.select_state("")
+        #self.Auth.select_state("")
+        self.Auth.setzipcode("")
+        self.Auth.setloginname("")
+        self.Auth.setpassword("")
+        self.Auth.setconfirm("")
         self.Auth.setagree()
         self.Auth.click_continue()
 
         act_title = self.driver.title
         if act_title == "Create Account":
             assert True
-            self.driver.save_screenshot(".\\Screenshots\\test_RegistrationPageTitle_PASS.png")
+            self.driver.save_screenshot(".\\Screenshots\\test_registration_mandatory_validation_PASS.png")
             self.logger.info("****** Mandatory Field Registration Successful *****")
             self.driver.close()
 
         else:
-            self.driver.save_screenshot(".\\Screenshots\\test_RegistrationPageTitle_FAIL.png")
+            self.driver.save_screenshot(".\\Screenshots\\test_registration_mandatory_validation_FAIL.png")
             self.logger.error("****** Mandatory Field Registration Failed *****")
             self.driver.close()
             assert False

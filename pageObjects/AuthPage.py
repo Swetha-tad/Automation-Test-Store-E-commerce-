@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 
 class AuthPage:
+    # User registration info
     # personal details
     textbox_firstname_id = "AccountFrm_firstname"
     textbox_lastname_id = "AccountFrm_lastname"
@@ -22,7 +23,12 @@ class AuthPage:
     textbox_confirm_id = "AccountFrm_confirm"
     checkbox_id = "AccountFrm_agree"
     button_auth_xpath="//button[normalize-space()='Continue']"
-    #logout_xpath="//body[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/ul[1]/li[10]/a[1]"
+
+    # User login info
+    textbox_login_id = "loginFrm_loginname"
+    textbox_login_password_id = "loginFrm_password"
+    button_login_xpath="//button[normalize-space()='Login']"
+    logout_linktext="Logoff"
 
 
 
@@ -85,6 +91,34 @@ class AuthPage:
         continue_btn = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.button_auth_xpath)))
         continue_btn.click()
+
+
+
+    def setloginid(self, login_id):
+        wait = WebDriverWait(self.driver, 10)
+        elem = wait.until(EC.presence_of_element_located((By.ID, self.textbox_login_id)))
+        elem.clear()
+        elem.send_keys(login_id)
+        #self.driver.find_element(By.ID, self.textbox_login_id).clear()
+        #self.driver.find_element(By.ID, self.textbox_login_id).send_keys(login_id)
+
+    def setloginpassword(self, login_password):
+        self.driver.find_element(By.ID, self.textbox_login_password_id).clear()
+        self.driver.find_element(By.ID, self.textbox_login_password_id).send_keys(login_password)
+
+    def click_login(self):
+        login_btn = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.button_login_xpath)))
+        login_btn.click()
+
+    def click_logout(self):
+        logout_btn = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.LINK_TEXT, self.logout_linktext)))
+        logout_btn.click()
+
+
+
+
 
 
 
